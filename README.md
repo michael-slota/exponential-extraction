@@ -2,7 +2,7 @@
 
 This repository contains a Jupyter notebook workflow for extracting an exponentially decaying signal from time traces that are strongly modulated by oscillations with varying amplitude, such as from a Hahn-echo experiment in EPR spectroscopy. This is especially useful when the exponential decay is not obvious because of a strongly oscillatory signal. The notebook filters the oscillatory component, identifies usable fitting windows, and fits the remaining decay to monoexponential, Gaussian, and stretched-exponential models.
 
-The project is structured so that the notebook acts as a user-facing analysis interface, while the reusable processing logic lives in a small Python module under `src/exponential_extraction/`.
+The workflow follows a typical data-analysis pipeline: load raw measurement files, preprocess and normalise the signal, select fitting windows, compare nonlinear models, and visualise the fitted parameters. The notebook acts as the user-facing analysis interface, while the reusable processing logic is located in a small Python module under `src/exponential_extraction/`.
 
 ## Example output
 
@@ -13,12 +13,13 @@ The project is structured so that the notebook acts as a user-facing analysis in
 ```text
 Exponential_extraction/
   data/                     Input `.dat` files used in the analysis, e.g. from XEPR
+  exponential_extraction/   Import shim for running from the repository root
   notebooks/
     exponential_extraction.ipynb
-  exponential_extraction/   
   src/
     exponential_extraction/
       analysis.py           Reusable analysis helpers used by the notebook
+  example_result.png        Representative output figure
   README.md
   requirements.txt
   .gitignore
@@ -46,9 +47,9 @@ The current workflow expects tab-separated `.dat` files in the `data/` folder. F
 
 Each file is expected to contain:
 
-- A first column with delay values in ns (typically exported from XEPR measurement files)
-- A second column with complex-valued echo data using `i` notation, for example `418568.71+90376.138i`.
-- The program does not account for unphased data. Please use phased data, where the majority of the signal is in the real part.
+- A first column with delay values in ns, typically exported from XEPR measurement files
+- A second column with complex-valued echo data using `i` notation, for example `418568.71+90376.138i`
+- Phased data, where the majority of the signal is in the real part
 
 Example:
 
@@ -75,9 +76,9 @@ jupyter notebook
 
 4. Open `notebooks/exponential_extraction.ipynb` and run the cells in order.
 
-The notebook is divided into a setup/settings section and a separate analysis section, so you can adjust parameters first and then run the analysis cells afterward.
+The notebook is divided into setup/settings cells and analysis cells, so parameters can be reviewed before running the full workflow.
 
-## Output
+## Outputs
 
 The notebook produces:
 
