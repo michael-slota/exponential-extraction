@@ -8,6 +8,8 @@ The workflow follows a typical data-analysis pipeline: load raw measurement file
 
 ![Example output](example_result.png)
 
+The output shows a dataset taken at 4 K. The dashed line represents a monoexpential decay function that was fitted to the local minima of the oscillation signal. The points are the anchoring points for the fit. Further fits can be selected, but are not shown in this figure.
+
 ## Repository structure
 
 ```text
