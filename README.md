@@ -1,4 +1,4 @@
-# Exponential Extraction from Oscillatory Echo Signals
+# Recovering Hidden Exponentially Decaying Signals
 
 This repository contains a Jupyter notebook workflow for extracting an exponentially decaying signal from time traces that are strongly modulated by oscillations with varying amplitude, such as from a Hahn-echo experiment in EPR spectroscopy. This is especially useful when the exponential decay is not obvious because of a strongly oscillatory signal. The notebook filters the oscillatory component, identifies usable fitting windows, and fits the remaining decay to monoexponential, Gaussian, and stretched-exponential models.
 
@@ -8,7 +8,7 @@ The workflow follows a typical data-analysis pipeline: load raw measurement file
 
 ![Example output](example_result.png)
 
-The output shows a dataset taken at 4 K. The dashed line represents a monoexpential decay function that was fitted to the local minima of the oscillation signal. The points are the anchoring points for the fit. Further fits can be selected, but are not shown in this figure.
+The output shows a dataset taken at 4 K. The dashed line represents a monoexponential decay function that was fitted to the local minima of the oscillation signal. The points are the anchoring points for the fit. Further fits can be selected, but are not shown in this figure.
 
 ## Repository structure
 
